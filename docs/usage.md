@@ -21,7 +21,7 @@ uv pip install -r requirements.txt
 ## 실행
 ```bash
 export FASTMCP_AUTH_BEARER_PUBLIC_KEY=<PUBLIC_KEY>
-python -m web_mcp.server
+python -m server
 ```
 
 ## Docker 사용
@@ -35,4 +35,4 @@ docker run -p 8000:8000 -e FASTMCP_AUTH_BEARER_PUBLIC_KEY=<PUBLIC_KEY> web-mcp
 - `page_intro(url)` : 해당 페이지의 한 줄 소개를 반환합니다.
 - `page_summary(url)` : RAG 입력을 위한 요약을 생성합니다.
 
-각 알고리즘의 상세 로직은 `src/web_mcp/tools.py`에서 구현하면 됩니다.
+각 알고리즘의 상세 로직은 `src/tools/` 폴더에서 구현하면 됩니다.

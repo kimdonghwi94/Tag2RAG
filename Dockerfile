@@ -9,4 +9,4 @@ COPY . /app
 
 RUN uv pip install --system 'fastmcp' 'fastapi' 'uvicorn[standard]' 'httpx' 'redis'
 
-CMD ["python", "-m", "web_mcp.server"]
+CMD ["python", "-m", "server"]

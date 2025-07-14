@@ -1,5 +1,5 @@
 # Web Search MCP
 
-This repository contains an example FastMCP server that extracts and summarizes web pages.
+This repository contains a FastMCP server skeleton for extracting and summarising web pages.
 
-See `docs/index.md` for usage instructions in Korean.
+See `docs/usage.md` for usage instructions in Korean.

@@ -7,7 +7,10 @@ import redis.asyncio as redis
 from fastmcp.server import FastMCP
 from fastmcp.server.auth.providers.bearer_env import EnvBearerAuthProvider
 
-from . import tools, resources
+from tools.crawler import list_pages
+from tools.metadata import page_intro
+from tools.summarizer import page_summary
+from resources.report import generate_report
 
 
 @asynccontextmanager
@@ -31,11 +34,11 @@ def create_server() -> FastMCP:
         cache_expiration_seconds=300,
     )
 
-    app.add_tool(tools.list_pages)
-    app.add_tool(tools.page_intro)
-    app.add_tool(tools.page_summary)
+    app.add_tool(list_pages)
+    app.add_tool(page_intro)
+    app.add_tool(page_summary)
 
-    app.resource("data://reports/{report_id}")(resources.generate_report)
+    app.resource("data://reports/{report_id}")(generate_report)
 
     return app
 

@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  web-mcp:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - FASTMCP_AUTH_BEARER_PUBLIC_KEY=${FASTMCP_AUTH_BEARER_PUBLIC_KEY}

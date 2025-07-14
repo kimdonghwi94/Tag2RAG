@@ -5,4 +5,3 @@ Welcome to Web MCP Server
    :maxdepth: 2
 
    usage
-   project_ko

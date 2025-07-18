@@ -1,5 +1,0 @@
-fastmcp
-fastapi
-uvicorn[standard]
-httpx
-redis

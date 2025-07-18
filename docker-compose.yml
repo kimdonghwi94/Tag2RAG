@@ -1,8 +1,42 @@
-version: '3.9'
+version: '3.8'
+
 services:
-  web-mcp:
+  web-search-mcp:
     build: .
     ports:
       - "8000:8000"
-    environment:
-      - FASTMCP_AUTH_BEARER_PUBLIC_KEY=${FASTMCP_AUTH_BEARER_PUBLIC_KEY}
+    volumes:
+      - ./src:/app/src
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    depends_on:
+      - web-search-mcp
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    restart: unless-stopped

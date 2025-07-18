@@ -1,24 +1,52 @@
 [project]
-name = "web_mcp"
+name = "web-search-mcp"
 version = "0.1.0"
-description = "Web search MCP server"
-authors = [{name = "Example"}]
+description = "A FastMCP server for web page extraction, analysis, and summarization."
+authors = [
+    { name = "Your Name", email = "your.email@example.com" },
+]
+license = { file = "LICENSE" }
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
 dependencies = [
     "fastmcp",
     "fastapi",
     "uvicorn[standard]",
-    "httpx",
+    "python-dotenv",
     "redis",
-]
-
-[project.optional-dependencies]
-dev = [
+    "celery",
+    "pyjwt",
+    "prometheus-fastapi-instrumentator",
+    "beautifulsoup4",
+    "requests",
+    "lxml",
     "sphinx",
     "myst-parser"
 ]
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
 
+[project.urls]
+"Homepage" = "https://github.com/your-username/web-search-mcp"
+"Bug Tracker" = "https://github.com/your-username/web-search-mcp/issues"
+
+[project.scripts]
+start-server = "web_search_mcp.server:main"
+
+[tool.ruff]
+line-length = 88
+
+[tool.uv]
+dev-dependencies = [
+    "pytest",
+    "ruff",
+]
